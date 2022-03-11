@@ -1,0 +1,384 @@
+/*you */
+.angola{
+  background-color: #f8f8f8;
+  color: #666;
+}
+
+.angola p{
+  font-size: 18px;
+  font-weight: 300;
+    line-height: 150%;
+}
+
+.angola .title{
+  font-size: 48px;
+  text-align: center;
+}
+
+.angola .segredo{
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.turismo{
+  background-color: #eee;
+}
+
+/**/
+.box-img{
+  background-color: #f2f2f2;
+}
+.flexx{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+
+.flexx .card{
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 15px;
+  overflow: hidden;
+}
+
+.flexx .card .imgBx,
+.flexx .card .contentBx{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flexx .card .imgBx img{
+  height: 400px;
+  object-fit: cover;
+}
+
+.flexx .card .contentBx::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--main-color), rgba(229, 255, 0, 0.918));
+  transition: 0.5s;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: right;
+  transition-delay: 0.5s;
+}
+
+.flexx .card:hover .contentBx::before{
+  transform: scaleX(1);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+  transition-delay: 0s;
+}
+
+.flexx .card .contentBx{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexx .card .contentBx .content{
+  position: relative;
+  padding: 30px;
+  z-index: 1;
+  transition: 0.5s;
+  transform: translateX(-300px);
+  transition-delay: 0s;
+}
+
+.flexx .card:hover .contentBx .content{
+  transform: translateX(0px);
+  transition-delay: 0.5s;
+}
+
+.flexx .card .contentBx .content h2{
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.flexx .card .contentBx .content p{
+  font-size: 1em;
+  line-height: 1.4em;
+  font-weight: 300;
+  color: #fff;
+}
+
+/**/
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* GRID GERAL */
+.estrutura {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 3fr 300px;
+  grid-template-areas:
+    "sidenav content anuncios"
+  ;
+}
+
+@media (max-width: 1200px) {
+  .estrutura {
+    grid-template-areas:
+      "sidenav content content"
+      "sidenav anuncios anuncios"
+    ;
+  }
+}
+
+@media (max-width: 760px) {
+  .estrutura {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "sidenav"
+      "content"
+      "anuncios"
+    ;
+  }
+}
+
+/*SIDENAV*/
+.sidenav {
+  grid-area: sidenav;
+  padding: 30px;
+}
+
+.sidenav .side-flex .anuncio-item {
+  display: block;
+  margin: 0 auto 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px 0px rgba(44,44,44,0.15);
+  transition: .1s ease-out;
+}
+
+.sidenav li a:hover {
+  background: var(--main-color);
+}
+
+@keyframes seta {
+  from {
+    right: 30px;
+  }
+  to {
+    right: 20px;
+  }
+}
+
+.side-flex{
+  background-color: transparent;
+}
+
+@media (max-width: 760px) {
+  .sidenav {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .sidenav::after {
+    content: '→';
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    color: rgba(0,0,0,.3);
+    animation: seta .5s ease-in 0s infinite alternate;
+  }
+  .sidenav .side-flex {
+    display: flex;
+  }
+  .sidenav .side-flex .anuncio-item {
+    flex: 1 0 60px;
+  }
+  .sidenav {
+    padding: 0 0px;
+  }
+  .sidenav .anuncio-item img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidenav {
+    grid-template-columns: auto;
+  }
+}
+
+/*CONTENT*/
+.contents {
+  grid-area: content;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+@media (max-width: 600px) {
+  .contents {
+    grid-template-columns: auto;
+  }
+}
+
+.col-wide {
+  grid-column: 1 / -1;
+}
+
+.imagem-1 {
+  grid-row: span 2;
+  align-self: end;
+  transition: .3s;
+}
+
+.imagem-1:hover{
+  transform: scale(1.1);
+}
+
+.imagem-2{
+  transition: .3s;
+}
+
+.imagem-2:hover{
+  transform: scale(1.1);
+}
+
+
+.item-2 {
+  align-self: end;
+}
+
+/*ESTILOS CONTENT*/
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: rgba(0,0,0,.7);
+}
+
+.informacoes p + p{
+  margin-top: 30px;
+}
+
+/*TITULO*/
+.titulo {
+  color: var(--main-color);
+}
+
+.titulo h1 {
+  font-size: 3.75em;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.titulo span {
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+/*CARACTERISTICAS*/
+.caracteristicas {
+  display: flex;
+  align-items: flex-start;
+}
+
+.caracteristicas > div {
+  width: 80px;
+  text-align: center;
+  background: var(--main-color);
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px 0px rgba(44,44,44,0.15);
+  position: relative;
+}
+
+.caracteristicas > div:first-child {
+  margin-right: 30px;
+}
+
+.caracteristicas span {
+  display: block;
+  color: var(--main-color);
+}
+
+.numero {
+  font-size: 3em;
+  line-height: 1;
+  margin: 10px auto;
+}
+
+.rotulo {
+  background: white;
+  border-radius: 0 0 5px 5px;
+  padding: 5px 0;
+  position: relative;
+  top: 2px;
+}
+
+.destaque {
+  font-size: 0.875em;
+  color: var(--main-color);
+  max-width: 16em;
+}
+
+.citacao, .atributos {
+  align-self: start;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px 0px rgba(44,44,44,0.15);
+  background: var(--main-color);
+}
+
+.citacao p {
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center;
+  color: white;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.atributos li {
+  color: white;
+  font-family: Courier, monospace;
+  font-size: 1.125em;
+  padding: 15px;
+}
+
+.atributos li + li {
+  border-top: 2px solid #fff;
+}
+
+/*ANUNCIOS*/
+.anuncios {
+  grid-area: anuncios;
+  display: grid;
+  align-content: start;
+  padding: 30px;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
